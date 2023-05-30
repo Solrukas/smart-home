@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
+const telegram = require('./chat/bots');
 
 const server_ip = "0.0.0.0";
 const server_port = "2316";
@@ -26,5 +27,6 @@ app.use((err, req, res, next) => {
 
 // express listen
 app.listen(server_port, server_ip, () => {
+    telegram.start();
     console.log(`Server running at http://${server_ip}:${server_port}/`);
 });
